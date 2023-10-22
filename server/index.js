@@ -51,7 +51,7 @@ app.get('/api/health',(req,res)=>{
     })
 })
 
-app.post('/register', async (req,res)=>{
+app.post('/register', async (req,res,next)=>{
     try{
         const {name,email,mobile,password} = req.body;
         if(!email){
@@ -69,13 +69,11 @@ app.post('/register', async (req,res)=>{
         res.status(200).json({message: 'Registration Successful'});
     }
     catch(error){
-        res.status(500).json({
-            message: error.message
-        })
+        next(error);
     }
 })
 
-app.post('/login', async (req,res)=>{
+app.post('/login', async (req,res,next)=>{
     try{
         const {email,password} = req.body;
         if(!email || !password){
@@ -97,12 +95,25 @@ app.post('/login', async (req,res)=>{
         });
     }
     catch(error){
-        res.status(500).json({
-            message: error.message
-        })
+        next(error)
     }
 })
 
+app.use((req,res,next)=>{
+    const err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+})
+
+// Error handler
+
+app.use((error,req,res,next)=>{
+    res.status(error.status || 500);
+    res.json({
+        status: error.status || 500,
+        message: error.message
+    })
+})
 
 
 app.listen(PORT,(err)=>{
