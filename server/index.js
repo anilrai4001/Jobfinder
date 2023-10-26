@@ -7,7 +7,7 @@ dotenv.config();
 
 const registerRoute = require('./routes/register.js');
 const loginRoute = require('./routes/login.js')
-const createJobRoute = require('./routes/createJob.js')
+const jobRoute = require('./routes/job.js')
 
 const PORT = process.env.PORT;
 const MONGODB_URL = process.env.MONGODB_URL;
@@ -25,7 +25,7 @@ app.get('/health',(req,res)=>{
 
 app.use(registerRoute);
 app.use(loginRoute);
-app.use(createJobRoute);
+app.use(jobRoute);
 
 
 app.use((req,res,next)=>{

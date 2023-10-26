@@ -11,20 +11,20 @@ router.post('/login', async (req,res,next)=>{
         if(!email || !password){
             throw {message:'Email and Password required'}
         }
-        const userData = await User.findOne({email});
-        if(!userData){
+        const user = await User.findOne({email});
+        if(!user){
             throw {message:'User does not exist'}
         }
-        const passwordMatched = await bcrypt.compare(password, userData.password);
+        const passwordMatched = await bcrypt.compare(password, user.password);
         if(!passwordMatched){
             throw {message:'Invalid Password'}
         }
-        const token = jwt.sign({userData},SECRET_KEY,{expiresIn: '1w'});
-        res.header('Authorization', token);
-
+        const token = jwt.sign({user},SECRET_KEY);
+        // const username = user.name;
         res.status(200).json({
             message: 'Login Successful',
-            token: token
+            name: user.name,
+            token
         });
     }
     catch(error){

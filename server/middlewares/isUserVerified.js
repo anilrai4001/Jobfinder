@@ -9,16 +9,13 @@ const isUserVerified = async (req,res,next) => {
             throw {message:'Please log in first'};
         }
 
-        
-
-        jwt.verify(token, SECRET_KEY, (err,decoded)=>{
-            if(err){
-                throw {message: 'User is not authenticated'}
-            }
-            req.user = decoded.user;
-            next();
-        });
-
+        const decoded = jwt.verify(token, SECRET_KEY);
+        if(!decoded){
+            throw {message: 'User is not authenticated'}
+        }
+        // console.log(decoded.userId);
+        req.userId = decoded.userId;
+        next();
     }
     catch(error){
         next(error);
