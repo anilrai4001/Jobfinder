@@ -12,7 +12,10 @@ const jobRoute = require('./routes/job.js')
 const PORT = process.env.PORT;
 const MONGODB_URL = process.env.MONGODB_URL;
 
+const cors = require('cors');
 
+app.use(cors());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
 
 app.get('/health',(req,res)=>{

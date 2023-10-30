@@ -21,7 +21,7 @@ router.post('/register', async (req,res,next)=>{
 
         res.status(200).json({
             message: 'Registration Successful',
-            name: user.name,
+            name: newUser.name,
         });
     }
     catch(error){

@@ -1,0 +1,28 @@
+.Tag{
+    margin:5px;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    height: 35px;
+}
+.skillName {
+    
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #FFEEEE;
+    padding: 4px 15px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cross{
+    background-color:#FF6B6B;
+    color:white;
+    font-size: 20px;
+    padding: 2px 5px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
