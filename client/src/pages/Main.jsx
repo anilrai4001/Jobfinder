@@ -11,7 +11,6 @@ function Main() {
       <Filter />
       <div style={{ width: '100%'}}>
         <Job />
-        <Job />
       </div>
 
     </div>

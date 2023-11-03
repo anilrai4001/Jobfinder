@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import styles from './RegisterForm.module.css'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios';
 
 function RegisterForm() {
+
+  const navigate = useNavigate();
 
   const [formData,setFormData] = useState({
     name:'',
@@ -31,9 +33,12 @@ function RegisterForm() {
         mobile: formData.mobile,
         password: formData.password,
       };
+      console.log(dataToSend);
       try {
         const response = await axios.post('http://localhost:5000/register', dataToSend);
         console.log('Registration successful: ', response.data);
+        localStorage.setItem('userData',JSON.stringify({name:response.data.name,token:response.data.token}))
+        navigate('/jobs');
       } 
       catch (error) {
         console.log('Registration Failed: ', error)
@@ -61,7 +66,7 @@ function RegisterForm() {
           <input type="checkbox" onChange={(e)=>setFormData({...formData, agreed: e.target.checked})} />
           By creating an account, I agree to our terms of use and privacy policy
         </label>
-        <button type='submit' >Create Account</button>
+        <button type='submit' onClick={handleSubmit} style={{cursor:'pointer'}} >Create Account</button>
       </form>
 
       <div>

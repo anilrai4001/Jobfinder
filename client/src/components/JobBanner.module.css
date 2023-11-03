@@ -1,0 +1,28 @@
+.JobBanner {
+    width: 45%;
+    height:100%;
+    background-color: lightcoral;
+    position:relative;
+    overflow: hidden;
+}
+
+.JobBanner>img{
+    height:100%;
+    width: 100%;
+    object-fit:cover;
+    
+}
+
+.bannerTitle {
+    width: 100%;
+    text-align: center;
+    color: white;
+
+    position: absolute;
+    top:5%;
+
+    font-size: 40px;
+    font-weight: 500;
+    /* background-color: aqua; */
+
+}

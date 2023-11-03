@@ -1,0 +1,107 @@
+.JobForm {
+    width: 55%;
+    /* background-color: aliceblue; */
+    padding: 0px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.title {
+    width: 100%;
+    /* background-color: aqua; */
+    font-size: 38px;
+    font-weight: 700;
+
+    text-align: left;
+    /* margin-bottom: 10px; */
+
+}
+
+.form {
+    width: 100%;
+    /* background-color: antiquewhite; */
+    display: flex;
+    flex-direction: column;
+}
+
+.labels {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 5px 0;
+}
+
+.inputName {
+    /* background-color: lightblue; */
+    width: 40%;
+
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.inputs,textarea{
+    /* background-color: lightcoral; */
+    width: 60%;
+    outline: none;
+    border: none;
+
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px 10px;
+
+    border-radius: 4px;
+    border: 1.5px solid #C2C2C2;
+
+}
+
+.select{
+    /* background-color: aliceblue; */
+    outline: none;
+    border: none;
+
+    width: 120px;
+height: 32px;
+
+border-radius: 4.6px;
+border: 1.84px solid #C2C2C2;
+/* color:#ADADAD; */
+
+
+font-size: 14px;
+font-weight: 500;
+
+
+
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+    position: relative;
+    bottom: 0;;
+}
+
+.buttons>div {
+    height: 40px;
+    width: 140px;
+    border: 1px solid #CECECE;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C2C2C2;
+
+    
+    font-size: 16px;
+    font-weight: 500;
+    
+}
+
+.buttons>div:last-of-type {
+    color: white;
+    background-color: #ED5353;
+    border: none;
+}

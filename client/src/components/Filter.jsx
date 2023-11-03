@@ -16,7 +16,7 @@ function Filter() {
 
                 <div className={styles.skillsContainer}>
                     <select className={styles.skills}>
-                        <option selected >Skills &#65088;</option>
+                        <option default >Skills &#65088;</option>
                         <option value="HTML">HTML</option>
                         <option value="CSS">CSS</option>
                         <option value="Javasript">Javascript</option>
