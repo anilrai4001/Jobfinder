@@ -45,7 +45,7 @@ function RegisterForm() {
       }
     }
     else{
-      console.log('All fields are mandatory');
+      alert('All fields are mandatory');
     }
 
   }
