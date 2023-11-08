@@ -20,12 +20,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
 
-app.get('/health',(req,res)=>{
-    res.json({
-        status:'active',
-        service:'job listing backend',
-        time: new Date()
-    })
+app.get('/',(req,res)=>{
+    res.json('hello world')
 })
 
 app.use(registerRoute);
