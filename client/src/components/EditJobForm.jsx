@@ -31,6 +31,7 @@ function EditJobForm() {
         navigate('/');
     }
 
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         const {
@@ -58,7 +59,8 @@ function EditJobForm() {
                     return;
                 }
                 const data = {...formDetails, name}
-                const response = await axios.put('http://localhost:5000/job',data,{
+                const backendURL = process.env.REACT_APP_BACKEND_URL;
+                const response = await axios.put(backendURL+'/job',data,{
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": token
@@ -83,8 +85,9 @@ function EditJobForm() {
     useEffect(()=>{
         const currentURL = window.location.href;
         const id = currentURL.split('/').pop();
-        const fetchData = async ()=>{
-            const response = await axios.get(`http://localhost:5000/job/` + id);
+        const fetchData = async ()=>{ 
+            const backendURL = process.env.REACT_APP_BACKEND_URL;
+            const response = await axios.get(backendURL+`/job/` + id);
             setFormDetails(response.data.data);
             console.log(response.data.data);
         }

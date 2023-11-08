@@ -3,6 +3,7 @@ import styles from './RegisterForm.module.css'
 import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios';
 
+
 function RegisterForm() {
 
   const navigate = useNavigate();
@@ -35,7 +36,8 @@ function RegisterForm() {
       };
       console.log(dataToSend);
       try {
-        const response = await axios.post('http://localhost:5000/register', dataToSend);
+        const backendURL = process.env.REACT_APP_BACKEND_URL;
+        const response = await axios.post(backendURL+'/register', dataToSend);
         console.log('Registration successful: ', response.data);
         localStorage.setItem('userData',JSON.stringify({name:response.data.name,token:response.data.token}))
         navigate('/');

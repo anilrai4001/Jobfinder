@@ -8,17 +8,19 @@ function Main() {
   const [jobArray, setJobArray] = useState([]);
   const [loggedin, setLoggedin] = useState(false);
   const [skills, setSkills] = useState([]);
-  const [title,setTitle] = useState([]);
+  const [title,setTitle] = useState('');
 
   let jobs = jobArray.map((ele) =>  <Job key={ele._id} data={ele} loggedin={loggedin} setLoggedin={setLoggedin} />);
-
-
 
   
   useEffect(() => {
     const fetchData = async () => {
-      let queryParameters = skills.map((ele)=> `skills[]=${ele}`).join('&') + '&' + title.map((ele)=> `title[]=${ele}`).join('&');
-      let response = await axios.get('http://localhost:5000/job?'+queryParameters);
+      let queryParameters = skills.map((ele)=> `skills[]=${ele}`).join('&');
+      if(title){
+        queryParameters+=`&title[]=${title}`
+      }
+      const backendURL = process.env.REACT_APP_BACKEND_URL;
+      let response = await axios.get(backendURL+'/job?'+queryParameters);
       setJobArray(response.data);
     }
     fetchData();

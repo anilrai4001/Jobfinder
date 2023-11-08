@@ -18,7 +18,8 @@ function JobDescription() {
         
         const fetchData = async () => {
           try {
-            const response = await axios.get(`http://localhost:5000/job/` + id);
+            const backendURL = process.env.REACT_APP_BACKEND_URL;
+            const response = await axios.get(backendURL+`/job/` + id);
             setJobData(response.data.data);
             setSkills(response.data.data.skills_required.split(',').map((ele)=><span>{ele}</span>))
             console.log(response.data.data);

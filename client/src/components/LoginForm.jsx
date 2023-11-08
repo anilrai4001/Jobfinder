@@ -30,7 +30,8 @@ function LoginForm() {
       };
       console.log(dataToSend);
       try {
-        const response = await axios.post('http://localhost:5000/login', dataToSend);
+        const backendURL = process.env.REACT_APP_BACKEND_URL;
+        const response = await axios.post(backendURL+'/login', dataToSend);
         console.log('login successful: ', response.data);
         localStorage.setItem('userData',JSON.stringify({name:response.data.name,token:response.data.token}))
         navigate('/');

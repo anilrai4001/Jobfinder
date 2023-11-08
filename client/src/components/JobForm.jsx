@@ -58,7 +58,8 @@ function JobForm() {
                     return;
                 }
                 const data = {...formDetails, name}
-                const response = await axios.post('http://localhost:5000/job',data,{
+                const backendURL = process.env.REACT_APP_BACKEND_URL;
+                const response = await axios.post(backendURL+'/job',data,{
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": token
