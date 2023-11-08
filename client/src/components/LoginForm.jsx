@@ -33,7 +33,7 @@ function LoginForm() {
         const response = await axios.post('http://localhost:5000/login', dataToSend);
         console.log('login successful: ', response.data);
         localStorage.setItem('userData',JSON.stringify({name:response.data.name,token:response.data.token}))
-        navigate('/jobs');
+        navigate('/');
       } 
       catch (error) {
         console.log('login Failed: ', error)

@@ -38,7 +38,7 @@ function RegisterForm() {
         const response = await axios.post('http://localhost:5000/register', dataToSend);
         console.log('Registration successful: ', response.data);
         localStorage.setItem('userData',JSON.stringify({name:response.data.name,token:response.data.token}))
-        navigate('/jobs');
+        navigate('/');
       } 
       catch (error) {
         console.log('Registration Failed: ', error)
